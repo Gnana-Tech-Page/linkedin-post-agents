@@ -1,0 +1,76 @@
+name: LinkedIn Terraform Tips — Daily Poster
+
+on:
+  # Run every day at 8:30 AM UTC
+  schedule:
+    - cron: "30 8 * * *"
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Command to run"
+        required: true
+        default: "run"
+        type: choice
+        options: [run, generate, schedule, report]
+      dry_run:
+        description: "Dry run (no actual posting)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["true", "false"]
+
+jobs:
+  post-tip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore state from cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            state/
+            output/
+          key: pipeline-state-${{ github.run_number }}
+          restore-keys: |
+            pipeline-state-
+
+      - name: Create output directories
+        run: mkdir -p state output
+
+      - name: Run pipeline
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          OPENAI_MODEL: gpt-4o
+          POST_INTERVAL_DAYS: "1"
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: python main.py ${{ github.event.inputs.command || 'run' }}
+
+      - name: Upload logs as artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: pipeline-logs-${{ github.run_number }}
+          path: output/pipeline.log
+          retention-days: 30
+
+      - name: Upload analytics report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: analytics-${{ github.run_number }}
+          path: output/analytics_report.md
+          retention-days: 30

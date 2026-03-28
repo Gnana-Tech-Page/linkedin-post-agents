@@ -1,0 +1,52 @@
+day,topic,scheduled_time,slot,posted
+1,terraform init deep dive,2025-03-28T08:30:00,08:30,False
+2,terraform plan best practices,2025-03-29T12:00:00,12:00,False
+3,terraform apply safely,2025-03-30T17:30:00,17:30,False
+4,state file management,2025-03-31T08:30:00,08:30,False
+5,remote state with S3,2025-04-01T12:00:00,12:00,False
+6,state locking with DynamoDB,2025-04-02T17:30:00,17:30,False
+7,terraform workspaces,2025-04-03T08:30:00,08:30,False
+8,modules structure,2025-04-04T12:00:00,12:00,False
+9,module versioning,2025-04-05T17:30:00,17:30,False
+10,variables and locals,2025-04-06T08:30:00,08:30,False
+11,output values,2025-04-07T12:00:00,12:00,False
+12,data sources,2025-04-08T17:30:00,17:30,False
+13,resource dependencies,2025-04-09T08:30:00,08:30,False
+14,count vs for_each,2025-04-10T12:00:00,12:00,False
+15,dynamic blocks,2025-04-11T17:30:00,17:30,False
+16,terraform fmt and validate,2025-04-12T08:30:00,08:30,False
+17,terragrunt overview,2025-04-13T12:00:00,12:00,False
+18,provider configuration,2025-04-14T17:30:00,17:30,False
+19,multiple providers,2025-04-15T08:30:00,08:30,False
+20,provider aliases,2025-04-16T12:00:00,12:00,False
+21,terraform import,2025-04-17T17:30:00,17:30,False
+22,moved blocks,2025-04-18T08:30:00,08:30,False
+23,refactoring resources,2025-04-19T12:00:00,12:00,False
+24,lifecycle rules,2025-04-20T17:30:00,17:30,False
+25,create_before_destroy,2025-04-21T08:30:00,08:30,False
+26,prevent_destroy,2025-04-22T12:00:00,12:00,False
+27,ignore_changes,2025-04-23T17:30:00,17:30,False
+28,terraform cloud basics,2025-04-24T08:30:00,08:30,False
+29,remote execution,2025-04-25T12:00:00,12:00,False
+30,policy as code with Sentinel,2025-04-26T17:30:00,17:30,False
+31,OPA with Terraform,2025-04-27T08:30:00,08:30,False
+32,tflint usage,2025-04-28T12:00:00,12:00,False
+33,checkov security scanning,2025-04-29T17:30:00,17:30,False
+34,terraform testing with Terratest,2025-04-30T08:30:00,08:30,False
+35,null_resource and triggers,2025-05-01T12:00:00,12:00,False
+36,provisioners (when/why avoid),2025-05-02T17:30:00,17:30,False
+37,backends overview,2025-05-03T08:30:00,08:30,False
+38,S3 backend config,2025-05-04T12:00:00,12:00,False
+39,GCS backend,2025-05-05T17:30:00,17:30,False
+40,Azure backend,2025-05-06T08:30:00,08:30,False
+41,secrets management with Vault,2025-05-07T12:00:00,12:00,False
+42,AWS Secrets Manager integration,2025-05-08T17:30:00,17:30,False
+43,conditional expressions,2025-05-09T08:30:00,08:30,False
+44,templatefile function,2025-05-10T12:00:00,12:00,False
+45,file() and filebase64(),2025-05-11T17:30:00,17:30,False
+46,terraform console,2025-05-12T08:30:00,08:30,False
+47,debugging with TF_LOG,2025-05-13T12:00:00,12:00,False
+48,CI/CD with Terraform,2025-05-14T17:30:00,17:30,False
+49,GitHub Actions pipeline,2025-05-15T08:30:00,08:30,False
+50,GitLab CI pipeline,2025-05-16T12:00:00,12:00,False
+51,atlantis workflow,2025-05-17T17:30:00,17:30,False
