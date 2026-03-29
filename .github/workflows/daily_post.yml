@@ -24,10 +24,14 @@ jobs:
   post-tip:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write # Allow workflow to update state files and logs
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
@@ -37,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Restore state from cache
+      # - name: Restore state from cache
         uses: actions/cache@v3
         with:
           path: |
@@ -55,9 +59,17 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           OPENAI_MODEL: gpt-4o
-          POST_INTERVAL_DAYS: "1"
+          POST_INTERVAL_DAYS: "1"         
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: python main.py ${{ github.event.inputs.command || 'run' }}
+
+      - name: Commit updated state back to repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/pipeline_state.json state/analytics.json
+          git diff --staged --quiet || git commit -m "chore: update pipeline state after day run [skip ci]"
+          git push
 
       - name: Upload logs as artifact
         if: always()

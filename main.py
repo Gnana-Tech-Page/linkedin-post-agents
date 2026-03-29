@@ -72,20 +72,67 @@ async def main():
         print(f"First post: {schedule[0]['scheduled_time']}")
         print(f"Last post:  {schedule[-1]['scheduled_time']}")
 
+    # elif args.command == "post":
+    #     if not args.day:
+    #         print("❌ Specify a day: python main.py post --day 5")
+    #         return
+    #     state = StateManager("state/pipeline_state.json").load()
+    #     schedule = state.get("schedule", [])
+    #     item = next((s for s in schedule if s["day"] == args.day), None)
+    #     if not item:
+    #         print(f"❌ Day {args.day} not found. Run 'generate' first.")
+    #         return
+    #     from agents.linkedin_agent import LinkedInAgent
+    #     agent = LinkedInAgent(config)
+    #     result = await agent.post(item["tip"])
+    #     print(f"✅ Posted Day {args.day}: {result}")
+
     elif args.command == "post":
         if not args.day:
             print("❌ Specify a day: python main.py post --day 5")
             return
-        state = StateManager("state/pipeline_state.json").load()
+
+        state_manager = StateManager("state/pipeline_state.json")
+        state = state_manager.load()
         schedule = state.get("schedule", [])
+
+        if not schedule:
+            print("❌ No schedule found. Run 'python main.py schedule' first.")
+            return
+
         item = next((s for s in schedule if s["day"] == args.day), None)
         if not item:
-            print(f"❌ Day {args.day} not found. Run 'generate' first.")
+            print(f"❌ Day {args.day} not found in schedule.")
             return
+
+        if item.get("posted"):
+            print(f"⚠️  Day {args.day} already marked as posted (ID: {item.get('post_id')})")
+            confirm = input("Post again anyway? (yes/no): ")
+            if confirm.lower() != "yes":
+                return
+
         from agents.linkedin_agent import LinkedInAgent
-        agent = LinkedInAgent(config)
-        result = await agent.post(item["tip"])
-        print(f"✅ Posted Day {args.day}: {result}")
+        from agents.monitor_agent import MonitorAgent
+        from datetime import datetime
+
+        linkedin = LinkedInAgent(config)
+        result = await linkedin.post(item["tip"])
+
+        # ✅ Stamp the state — these three fields are what the pipeline checks
+        item["posted"]    = True
+        item["post_id"]   = result.get("id")
+        item["posted_at"] = datetime.now().isoformat()
+        item["failed"]    = False
+
+        # ✅ Write back to disk
+        state_manager.save(state)
+
+        # ✅ Tell MonitorAgent to start tracking this post
+        monitor = MonitorAgent(config)
+        await monitor.track(item)
+
+        print(f"✅ Day {args.day} posted (ID: {result.get('id')})")
+        print(f"   State updated — pipeline_state.json now shows posted: true")
 
     elif args.command == "report":
         monitor = MonitorAgent(config)

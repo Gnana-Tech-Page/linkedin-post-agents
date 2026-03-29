@@ -17,7 +17,13 @@
       ],
       "has_code": true,
       "estimated_read_time": "3 min read",
-      "generated_at": "2026-03-28T18:22:17.216329"
+      "generated_at": "2026-03-28T18:22:17.216329",
+      "scheduled_time": "2026-03-28T08:30:00",
+      "slot": "08:30",
+      "posted": true,
+      "post_id": "manually-confirmed-day1",
+      "posted_at": "2026-03-28T18:31:00",
+      "failed": false
     },
     {
       "day": 2,
