@@ -949,10 +949,10 @@
       },
       "scheduled_time": "2026-03-31T12:00:00",
       "slot": "17:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7444723153613991936",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-03-31T12:31:56.409814"
     },
     {
       "day": 4,
