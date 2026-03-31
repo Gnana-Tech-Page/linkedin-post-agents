@@ -65,16 +65,31 @@ class MonitorAgent:
 
     async def _fetch_post_stats(self, post_id: str) -> dict:
         """Fetch engagement metrics from LinkedIn API."""
-        url = f"https://api.linkedin.com/v2/socialActions/urn:li:ugcPost:{post_id}"
+
+        # Skip fake/manual post IDs
+        if not post_id or post_id.startswith(('dry-run', 'confirmed', 'manually')):
+            return {}
+
+        # post_id may already be a full URN like urn:li:share:123
+        # or just a numeric ID — handle both
+        if post_id.startswith('urn:li:'):
+            urn = post_id
+        else:
+            urn = f"urn:li:ugcPost:{post_id}"
+
+        url = f"https://api.linkedin.com/v2/socialActions/{urn}"
+
         async with httpx.AsyncClient() as client:
             resp = await client.get(url, headers=self.headers)
             if resp.status_code == 200:
                 data = resp.json()
                 return {
-                    "likes": data.get("likesSummary", {}).get("totalLikes", 0),
+                    "likes":    data.get("likesSummary", {}).get("totalLikes", 0),
                     "comments": data.get("commentsSummary", {}).get("totalFirstLevelComments", 0),
                 }
-        return {}
+            else:
+                logger.warning(f"Stats fetch failed {resp.status_code} for {urn}")
+                return {}
 
     def generate_report(self) -> str:
         """Generate a markdown summary report."""
