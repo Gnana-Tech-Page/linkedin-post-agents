@@ -1063,10 +1063,10 @@
       },
       "scheduled_time": "2026-04-04T12:00:00",
       "slot": "08:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7446188116266278912",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-04T13:33:10.611252"
     },
     {
       "day": 8,
