@@ -1197,10 +1197,10 @@
       },
       "scheduled_time": "2026-04-09T12:00:00",
       "slot": "17:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7448011638227587073",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-09T14:19:12.130852"
     },
     {
       "day": 13,
