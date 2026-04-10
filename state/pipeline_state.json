@@ -1224,10 +1224,10 @@
       },
       "scheduled_time": "2026-04-10T12:00:00",
       "slot": "08:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7448367606203457537",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-10T13:53:41.679260"
     },
     {
       "day": 14,
