@@ -1331,10 +1331,10 @@
       },
       "scheduled_time": "2026-04-14T12:00:00",
       "slot": "12:00",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7449823132561059841",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-14T14:17:26.091376"
     },
     {
       "day": 18,
