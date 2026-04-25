@@ -1628,10 +1628,10 @@
       },
       "scheduled_time": "2026-04-25T12:00:00",
       "slot": "08:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7453800599378370561",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-25T13:42:28.527131"
     },
     {
       "day": 29,
