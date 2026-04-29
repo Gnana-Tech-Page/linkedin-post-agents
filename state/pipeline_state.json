@@ -1709,10 +1709,10 @@
       },
       "scheduled_time": "2026-04-28T12:00:00",
       "slot": "08:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7455263580758753280",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-29T14:35:49.949024"
     },
     {
       "day": 32,
@@ -1736,10 +1736,10 @@
       },
       "scheduled_time": "2026-04-29T12:00:00",
       "slot": "12:00",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7455263582268821504",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-04-29T14:35:50.836883"
     },
     {
       "day": 33,
