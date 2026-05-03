@@ -1844,10 +1844,10 @@
       },
       "scheduled_time": "2026-05-03T12:00:00",
       "slot": "17:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7456702389782228992",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-05-03T13:53:08.786866"
     },
     {
       "day": 37,
