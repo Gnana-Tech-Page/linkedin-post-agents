@@ -1898,10 +1898,10 @@
       },
       "scheduled_time": "2026-05-05T12:00:00",
       "slot": "12:00",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7457808536174043136",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-05-06T15:08:34.969159"
     },
     {
       "day": 39,
@@ -1925,10 +1925,10 @@
       },
       "scheduled_time": "2026-05-06T12:00:00",
       "slot": "17:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7457808540620087296",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-05-06T15:08:36.248550"
     },
     {
       "day": 40,
