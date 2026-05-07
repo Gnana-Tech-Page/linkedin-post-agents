@@ -1951,10 +1951,10 @@
       },
       "scheduled_time": "2026-05-07T12:00:00",
       "slot": "08:30",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7458171413271793665",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-05-07T15:10:31.644221"
     },
     {
       "day": 41,
