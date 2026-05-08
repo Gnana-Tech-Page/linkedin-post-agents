@@ -1978,10 +1978,10 @@
       },
       "scheduled_time": "2026-05-08T12:00:00",
       "slot": "12:00",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7458521428502507520",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-05-08T14:21:21.432487"
     },
     {
       "day": 42,
