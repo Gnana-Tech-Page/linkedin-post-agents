@@ -2050,10 +2050,10 @@
       },
       "scheduled_time": "2026-05-11T12:00:00",
       "slot": "12:00",
-      "posted": false,
-      "post_id": null,
+      "posted": true,
+      "post_id": "urn:li:share:7459629105202880512",
       "failed": false,
-      "posted_at": null
+      "posted_at": "2026-05-11T15:42:52.063661"
     },
     {
       "day": 45,
